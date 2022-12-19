@@ -115,16 +115,15 @@ class CompteController{
     {
         $cm = new CompteManager();
         $infos = $cm->checkAlreadyExists($identifiant, $email, $numero);
-        var_dump($infos);
-        if ($infos['identifiant'] == false)
+        if ($infos['identifiant'] == true)
         {
             $message = "Identifiant déjà utilisé";
         }
-            else if ($infos['email'] == false)
+            else if ($infos['email'] == true)
             {
                 $message = "Email déjà utilisé";
             }
-                else if ($infos['numero'] == false)
+                else if ($infos['numero'] == true)
                 {
                     $message = "Numero déjà utilisé";
                 } 

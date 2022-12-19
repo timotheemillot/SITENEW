@@ -7,7 +7,7 @@
         <h4><span class="auto-typing"></span></h4>
 
         <div class="row"> 
-            <a href="#">Nous contacter</a>
+            <a href="index.php?action=contact">Nous contacter</a>
             <a  href="#">Qu'est-ce que AirPur <span>&#x27f6</span></a>
 
         </div>

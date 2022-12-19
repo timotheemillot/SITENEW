@@ -32,9 +32,9 @@
         <div id="divtopfooter">
         <div id="divhelp">
             <span id="needhelptext">Besoin d'aide ? </span>
-            <a id="needhelplink" href="#">Contactez-nous !</a> 
+            <a id="needhelplink" href="index.php?action=contact">Contactez-nous !</a> 
         </div>
-        <a id="policonf" href="../PoliConf/policonf.html">Politique de confidentialité<a>
+        <a id="policonf" href="index.php?action=policonf">Politique de confidentialité<a>
         <div id="langue">
             <label for="langues">Langue:</label>
             <select name="langues" id="">

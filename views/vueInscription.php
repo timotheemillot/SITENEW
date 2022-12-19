@@ -14,7 +14,7 @@
             <input type="email" class="textinput" name="email" placeholder="E-Mail" required>  
         </div>
         <div class="divinput">
-            <input type="tel" class="textinput" name="numero" placeholder="Numéro de téléphone" required>  
+            <input type="tel" class="textinput" name="numero" placeholder="Numéro de téléphone" maxlength="12" required>  
         </div>
 
         <div class="divinput">

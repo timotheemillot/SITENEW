@@ -25,6 +25,18 @@ class MainController
         ]);
     }
 
+    public function displayContact()
+    {
+        $indexView = new View('Contact');
+        $indexView->generer([]);
+    }
+
+    public function displayPoliconf()
+    {
+        $indexView = new View('Policonf');
+        $indexView->generer([]);
+    }
+
 }
 
 

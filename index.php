@@ -39,7 +39,11 @@ else {
                     break;
                 case "statistique":
                     break;
-                case "nous-contacter":
+                case "contact":
+                    $mainController->displayContact();
+                    break;
+                case "policonf":
+                    $mainController->displayPoliconf();
                     break;
                 case "airpur":
                     break;

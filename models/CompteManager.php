@@ -59,18 +59,27 @@ class CompteManager extends Model{
         if ($checkIdentifiant == false)
         {
             $resIdentifiant = false;
-        } else {
-            $resIdentifiant = true;
-        }
+        } 
+            else {
+                $resIdentifiant = true;
+            }
         if ($checkEmail == false)
+        {
             $resEmail = false;
+        }     
             else
+            {
                 $resEmail = true;
-
+            }
         if ($checkNumero == false)
+        {
             $resNumero = false;
+        }
             else
+            {
                 $resNumero = true;
+            }
+                
 
         $res = array(
             "identifiant" => $resIdentifiant,

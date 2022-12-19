@@ -266,3 +266,44 @@ span
 }
 
 /*----------TABLECOMPTE-END----------*/
+
+/*----------CONTACT----------*/
+#center{
+    margin: auto;
+    font-size: large;
+}
+
+#logotwitter{
+        width: 50px;
+        cursor: pointer;
+        
+}
+
+#logofacebook{
+    width: 45px;
+    cursor: pointer;
+    
+}
+
+#logoinsta{
+    width:40px;
+    cursor: pointer;
+    
+}
+
+.align1{
+    text-align: center;
+    background-color: rgb(185, 185, 185);
+}
+
+#align2{
+    
+    text-align: center;
+}
+
+#img{
+    float:inline-end
+}
+
+
+/*----------CONTACT-END----------*/
