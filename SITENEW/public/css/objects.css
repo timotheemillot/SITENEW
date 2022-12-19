@@ -1,0 +1,268 @@
+/*----------TABLE----------*/
+
+#divListCar
+{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+
+
+#divform{
+    margin: auto;
+    margin-top: 2%;
+    border : 3px solid rgb(1, 99, 177);
+    border-radius: 20px / 10px;
+    width: 600px;
+    padding: 2%;
+  
+    
+  }
+
+
+.infos {
+    margin-right: -85px;
+    font-size: 18px;
+    font-weight:bold;
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+#lignehead{
+    background-color: #212529;
+    
+    color: white;
+}
+
+
+
+#listcar{
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    background-color: white;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+#listcar > td,th,tr{
+   
+    padding: 20px;
+    height: 20px;
+}
+
+#addcar{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bout a {
+    text-align: center;
+    padding: 5px 20px;
+    text-decoration:none ;
+    color : black;
+    border: 1px solid black;
+    
+    font-size: 18px;
+    transition: 0.3s;
+    box-shadow: 0 7px rgb(182, 214, 243);
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 2;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+
+}
+
+.bout a:hover{
+    background-color: #212529;
+    color: white;
+}
+
+.bout a:active{
+    background-color: rgb(1, 99, 177);
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+/*----------TABLE-END----------*/
+
+
+
+/*----------FORM----------*/
+
+.form
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    height: fit-content;
+    background:#e6e6e68f;
+    border-radius:8px;
+    margin-bottom: 6%;
+    margin-top: 2%;
+    padding:60px 40px;
+    max-width:calc(100vw - 40px);
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
+    
+}
+
+#retour 
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+h2
+{
+    margin:10px 0;
+    padding-bottom:10px;
+    width:180px;
+    color:#78788c;
+    border-bottom:3px solid #78788c;
+}
+
+
+label
+{
+    font-family:'Montserrat',sans-serif;
+    font-size: large;
+}
+
+input
+{
+    
+    width:100%;
+    padding: 15px;
+    box-sizing:border-box;
+    background:none;
+    outline:none;
+    resize:none;
+    border: 0;
+    font-family:'Montserrat',sans-serif;
+    font-size: 15px;
+    margin-top : -2px;
+    transition:all .3s;
+    border-bottom:2px solid #bebed2;
+}
+
+input:hover
+{
+    background : #c7c5c5;
+    color : #000000 ; 
+}
+
+p:before
+{
+    content:attr(type);
+    display:block;
+    margin:28px 0 0;
+    font-size:14px;
+    color:#5a5a5a
+}
+
+.button
+{
+    float:right;
+    padding:8px 12px;
+    font-family:'Montserrat',sans-serif;
+    border:2px solid #78788c;
+    color:#5a5a6e;
+    margin-top: 10px;
+    cursor:pointer;
+    transition:all .3s
+}
+
+.button:hover
+{
+    
+    background-color: #808080;
+    color:rgb(0, 0, 0);
+    
+}
+
+span
+{
+    margin:0 5px 0 15px;
+}
+
+/*----------FORM-END----------*/
+
+/*----------POPUP----------*/
+
+#popup{
+    color:red;
+    text-align: center;
+}
+
+/*----------POPUP-END----------*/
+
+/*----------TABLECOMPTE----------*/
+
+#tableau{
+    margin-left: auto;
+    margin-right: auto; 
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-collapse: separate;
+    border-spacing: 0px 10px;
+    background-color: rgba(109, 130, 175, 0.5);
+    padding: 3%;
+    border-radius:  30px;
+}
+
+#entete{
+    text-align: center;
+    font-size: 40px;
+    padding-bottom: 30px;
+}
+
+.colonnedroite
+{   
+    
+    padding: 3%;
+    margin: 3%;
+    width: 40%;
+    text-align: left;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+}
+.colonnegauche
+{   
+    padding: 3%;
+    width: 40%;
+    text-align: right;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+
+}
+
+.ligne{
+  font-size: 40px;
+  background:#e6e6e68f;
+  border-radius:50px;
+  font-size: 10px;
+
+ 
+}
+.infos {
+ 
+    font-size: 30px;
+    font-weight:bold;
+    color: black;
+    font-family: 'Montserrat',sans-serif;   
+}
+
+.titre{
+    font-size: 30px;
+}
+
+/*----------TABLECOMPTE-END----------*/
