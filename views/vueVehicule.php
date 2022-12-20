@@ -1,5 +1,7 @@
 
 <div id="divListCar">
+<p id="popup"><?= $popup; ?></p> 
+<br>
     <table id="listcar">
         <tr id="lignehead">
             <th>Marque</th>
@@ -45,5 +47,5 @@
         <div class="bout"> 
         <a href="index.php?action=add-vehicule">Ajouter un véhicule</a>
         <div>
-    <p id="popup"><?= $popup; ?></p>       
+          
 </div>

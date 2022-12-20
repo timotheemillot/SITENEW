@@ -44,6 +44,12 @@ if (isset($_GET)) {
             case "add-vehicule":
                 $addVehiculeController->displayAddVehicule();
                 break;
+            case "edit-vehicule":
+                $addVehiculeController->displayEditVehicule($_GET['idVehicule']);
+                break;
+            case "del-vehicule":
+                $addVehiculeController->deleteVehicule($_GET['idVehicule']);
+                break;
             case "compte":
                 $compteController->displayCompte();
                 break;

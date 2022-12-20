@@ -1,37 +1,37 @@
 <div class = "form">
-            <h2>Ajouter un véhicule</h2>
-            <form action="index.php?action=add-vehicule" method="POST">
+            <h2><?=$titre?></h2>
+            <form action=<?php echo "index.php?action="; if (isset($vehicule)) echo "edit-vehicule"; else echo "add-vehicule"; ?> method="POST">
                 
-                <?php if(isset($infos)) echo "<input type=\"hidden\" name=\"id\" value=". $_GET['idVehicule'] .">";?>
+                <?php if(isset($vehicule)) echo "<input type=\"hidden\" name=\"idVehicule\" value=". $vehicule->getIdVehicule() .">";?>
                 <label for="marque">Marque : </label>
-                <input name="marque" type="text" required value=<?php if(isset($infos)) echo $infos["Marque"];?>> 
+                <input name="marque" type="text" required value=<?php if(isset($vehicule)) echo $vehicule->getMarque();?>> 
                 <br>
                 <label for="modele">Modele : </label>
-                <input name="modele" type="text" required value=<?php if(isset($infos)) echo $infos["Modele"];?>>
+                <input name="modele" type="text" required value=<?php if(isset($vehicule)) echo $vehicule->getModele();?>>
                 <br>
                 <label for="immatriculation">Immatriculation : </label>
-                <input name="immatriculation" type="text" required value=<?php if(isset($infos)) echo $infos["Immatriculation"];?>>
+                <input name="immatriculation" type="text" required value=<?php if(isset($vehicule)) echo $vehicule->getImmatriculation();?>>
                 <br>
                 <label for="site">Site : </label>
-                <input name="site" type="text" required value=<?php if(isset($infos)) echo $infos["Site"];?>>
+                <input name="site" type="text" required value=<?php if(isset($vehicule)) echo $vehicule->getSite();?>>
                 <br>
                 <label for="carburant">Carburant : </label>
-                <input name="carburant" type="text" required value=<?php if(isset($infos)) echo $infos["Carburant"];?>>
+                <input name="carburant" type="text" required value=<?php if(isset($vehicule)) echo $vehicule->getCarburant();?>>
                 <br>
                 <label for="miseenservice">Date de mise en service : </label>
-                <input name="miseenservice" type="date" value=<?php if(isset($infos)) echo $infos["MiseEnService"];?>>
+                <input name="miseenservice" type="date" value=<?php if(isset($vehicule)) echo $vehicule->getMiseEnService();?>>
                 <br>
                 <label for="critair">Vignette critair : </label>
-                <input name="critair" type="text" value=<?php if(isset($infos)) echo $infos["Critair"];?>>
+                <input name="critair" type="text" value=<?php if(isset($vehicule)) echo $vehicule->getCritair();?>>
                 <br>
                 <label for="assurance">Assurance : </label>
-                <input name="assurance" type="number" value=<?php if(isset($infos)) echo $infos["Assurance"];?>>
+                <input name="assurance" type="number" value=<?php if(isset($vehicule)) echo $vehicule->getAssurance();?>>
                 <br>
                 <label for="puissance">Puissance : </label>
-                <input name="puissance" type="number" value=<?php if(isset($infos)) echo $infos["Puissance"];?>>
+                <input name="puissance" type="number" value=<?php if(isset($vehicule)) echo $vehicule->getPuissance();?>>
                 <br>
                 <label for="ageparc">Age du parc : </label>
-                <input name="ageparc" type="number" value=<?php if(isset($infos)) echo $infos["AgeParc"];?>>
+                <input name="ageparc" type="number" value=<?php if(isset($vehicule)) echo $vehicule->getAgeParc();?>>
                 <br>
                 <input class="button" name="submit" type="submit" value="Valider">
                 

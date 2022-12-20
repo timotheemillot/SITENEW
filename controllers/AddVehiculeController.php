@@ -33,7 +33,8 @@ class AddVehiculeController
         }
         else
         {
-            $indexView = new View('AddVehicule'); 
+            $indexView = new View('AddVehicule');
+            $vm = new VehiculeManager();
             $indexView->generer([
             'titre' => "Ajouter un vehicule",
             ]);
@@ -53,6 +54,74 @@ class AddVehiculeController
             $popup = "Erreur : Vehicule non créé";
         
        return $popup;
+    }
+
+    function displayEditVehicule(?int $idVehicule = null)
+    {
+        if(isset($_POST['submit']))
+        {
+            $vehiculeData = array(
+                "idVehicule" => $_POST['idVehicule'],
+                "marque" => $_POST['marque'],
+                "modele" => $_POST['modele'],
+                "immatriculation" => $_POST['immatriculation'],
+                "site" => $_POST['site'],
+                "carburant" => $_POST['carburant'],
+                "miseenservice" => $_POST['miseenservice'],
+                "critair" => $_POST['critair'],
+                "assurance" => $_POST['assurance'],
+                "puissance" => $_POST['puissance'],
+                "ageparc" => $_POST['ageparc']
+            ); 
+            $vehicule = new Vehicule();
+            $vehicule->hydrate($vehiculeData);
+            $this->editVehicule($vehicule);
+            $indexView = new View('Vehicule');
+            $vm = new VehiculeManager();
+            $indexView->generer([
+                'popup' => "Vehicule modifié",
+                'allVehicule' => $vm->getAll()
+            ]);
+        }
+        else
+        {
+            $vm = new VehiculeManager();
+            $vehicule = new Vehicule();
+            $vehicule = $vm->getById($idVehicule);
+            $indexView = new View('AddVehicule');
+            $indexView->generer([
+                'titre' => 'Modifier un véhicule',
+                'vehicule' => $vehicule
+            ]);
+
+        }
+    }
+
+    function editVehicule($vehicule)
+    {
+        $vm = new VehiculeManager();
+        $vm->editVehicule($vehicule);
+    }
+
+    function deleteVehicule($idVehicule)
+    {
+        $vm = new VehiculeManager();
+        $vm->deleteVehicule($idVehicule);
+        $vehicule = $vm->getById($idVehicule);
+        if(isset($vehicule))
+        {
+            $message = "Erreur lors de la suppresion";
+        }
+        else
+        {
+            $message = "Vehicule supprimé";
+        }
+
+        $indexView = new View('Vehicule');
+        $indexView->generer([
+            'popup' => $message,
+            'allVehicule' => $vm->getAll()
+        ]);
     }
 
 }

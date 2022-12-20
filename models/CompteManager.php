@@ -26,7 +26,7 @@ class CompteManager extends Model{
     {
         $param = array($identifiant);
         $compteData = $this->execRequest('SELECT * FROM compte WHERE Identifiant = ?', $param)->fetch();
-        if(isset($compteData))
+        if($compteData != false)
         {
             $compte = new Compte();
             $compte->hydrate($compteData);
