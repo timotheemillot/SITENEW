@@ -8,7 +8,7 @@
 
         <div class="row"> 
             <a href="index.php?action=contact">Nous contacter</a>
-            <a  href="#">Qu'est-ce que AirPur <span>&#x27f6</span></a>
+            <a  href="index.php?action=presentation">Qu'est-ce que AirPur <span>&#x27f6</span></a>
 
         </div>
     </div>

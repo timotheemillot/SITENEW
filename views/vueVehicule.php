@@ -32,7 +32,7 @@
                 <td>" . $vehicule->getAssurance() . "</td>
                 <td>" . $vehicule->getPuissance() . "</td>
                 <td>" . $vehicule->getAgeParc() . "</td>
-                <td> <a href=\"index.php?action=get-detail&idVehicule=" . $vehicule->getIdVehicule() . "\">Details</a>
+                <td> <a href=\"index.php?action=detail-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\">Details</a>
                 <td> <a href=\"index.php?action=edit-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\">Edit  ||  </a><a href=\"index.php?action=del-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\">Del</a></td>
             <tr>";
         }

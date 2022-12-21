@@ -2,10 +2,10 @@
 
 require_once('controllers/MainController.php');
 require_once('controllers/CompteController.php');
-require_once('controllers/AddVehiculeController.php');
+require_once('controllers/VehiculeController.php');
 
 $mainController = new MainController();
-$addVehiculeController = new AddVehiculeController();
+$VehiculeController = new VehiculeController();
 $compteController = new CompteController();
 
 if (!isset($_COOKIE['compte']) && isset($_GET['action']))
@@ -42,13 +42,22 @@ if (isset($_GET)) {
                 $mainController->displayVehicule();
                 break;
             case "add-vehicule":
-                $addVehiculeController->displayAddVehicule();
+                $VehiculeController->displayAddVehicule();
                 break;
             case "edit-vehicule":
-                $addVehiculeController->displayEditVehicule($_GET['idVehicule']);
+                $VehiculeController->displayEditVehicule($_GET['idVehicule']);
                 break;
             case "del-vehicule":
-                $addVehiculeController->deleteVehicule($_GET['idVehicule']);
+                $VehiculeController->deleteVehicule($_GET['idVehicule']);
+                break;
+            case "detail-vehicule":
+                $VehiculeController->displayDetail($_GET['idVehicule']);
+                break;
+            case "add-vidange":
+                $VehiculeController->displayAddVidange($_GET['idVehicule']);
+                break;
+            case "add-courroie":
+                $VehiculeController->displayAddCourroie($_GET['idVehicule']);
                 break;
             case "compte":
                 $compteController->displayCompte();
@@ -63,7 +72,8 @@ if (isset($_GET)) {
             case "policonf":
                 $mainController->displayPoliconf();
                 break;
-            case "airpur":
+            case "presentation":
+                $mainController->displayPresentation();
                 break;
             default:
                 $mainController->Index();

@@ -307,3 +307,81 @@ span
 
 
 /*----------CONTACT-END----------*/
+
+/*----------PRESENTATION----------*/
+
+#copyright{
+    display: flex;
+    justify-content: left;
+    border-top: #fff solid 1px;
+    padding: 10px;
+    
+}
+
+#titre1
+{ font-size: 25px;
+
+}
+
+
+.Quisommesnous{
+    padding: 5% 5% 5% 5%;
+    text-align: left;
+    margin-left: 2%;
+    font-size: 150%;
+}
+
+.Quelqueschiffres{
+    padding: 5% 5% 5% 5%;
+    text-align: right;
+    margin-right: 0%;
+    font-size: 150%;
+    background: rgba(223, 223, 223, 0.842);
+    padding: 5% 5% 5% 5%;
+}
+
+.Notreobjectif
+{
+    padding: 5% 5% 5% 5%;
+    text-align: left;
+    margin-left: 2%;
+    font-size: 150%;
+}
+
+
+
+.pollution{
+    
+    width: 10%;
+    margin-top: 100px;
+    margin-right: 20%;
+    float: right;
+}
+
+.station{
+    
+    width: 10%;
+    margin-top: -300px;
+    margin-left: 15%;
+    float: left;
+}
+
+.Clio2-Phase2-80cv-Diesel-sahquelplaisir-a-conduire
+{
+    width: 10%;
+    margin-top: -150px;
+    margin-right: 20%;
+    float: right;
+}
+
+.oui {  
+    font-size: 0;
+    border : 3px ;  
+    border-bottom: solid  rgb(1, 99, 177);
+    border-radius: 8%;
+    padding: 6%;  
+         
+
+}
+
+/*----------PRESENTATION-END----------*/

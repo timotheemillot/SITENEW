@@ -2,6 +2,10 @@
 
 require_once("models/Model.php");
 require_once("models/Vehicule.php");
+require_once("models/details/Vidange.php");
+require_once("models/details/Courroie.php");
+require_once("models/details/Ct.php");
+require_once("models/details/Intervention.php");
 
     class VehiculeManager extends Model
     {
@@ -53,6 +57,85 @@ require_once("models/Vehicule.php");
             $this->execRequest('DELETE FROM vehicule WHERE idVehicule = ?',$param);
 
         }
+
+        public function getVidange($idVehicule)
+        {
+            $allVidange = array();
+            $param = array($idVehicule);
+            $allVidangeData = $this->execRequest('SELECT idVidange, cadencevidange,kmdernierevidange,vidangeafaire FROM vidange WHERE idVehicule = ?', $param)->fetchAll();
+            foreach($allVidangeData as $vidangeData)
+            {
+                $vidange = new Vidange();
+                $vidange->hydrate($vidangeData);
+                array_push($allVidange, $vidange);
+            }
+            
+            return $allVidange;
+        }
+
+        public function getCourroie($idVehicule)
+        {
+            $allCourroie = array();
+            $param = array($idVehicule);
+            $allCourroieData = $this->execRequest('SELECT idCourroie, cadencecourroie,kmdernierecourroie,courroiearemplacer FROM courroie WHERE idVehicule = ?', $param)->fetchAll();
+            foreach($allCourroieData as $CourroieData)
+            {
+                $courroie = new Courroie();
+                $courroie->hydrate($CourroieData);
+                array_push($allCourroie, $courroie);
+            }
+            return $allCourroie;
+        }
+
+        public function getCt($idVehicule)
+        {
+            $param = array($idVehicule);
+            $ctData = $this->execRequest('SELECT idCt, datedernierct, complementairect, dateprochainct FROM infoct WHERE idVehicule = ?', $param)->fetchAll();
+            $ct = new Ct();
+            $ct->hydrate($ctData);
+            return $ct;
+        }
+
+        public function getIntervention($idVehicule)
+        {
+            $param = array($idVehicule);
+            $interventionData = $this->execRequest('SELECT idIntervention, date, cout, kilometre, description FROM intervention WHERE idVehicule = ?', $param)->fetchAll();
+            $intervention = new Intervention();
+            $intervention->hydrate($interventionData);
+            return $intervention;
+        }
+
+        public function addVidange(Vidange $vidange) : Vidange
+        {
+            $param = array($vidange->getCadenceVidange(), $vidange->getKmDerniereVidange(), $vidange->getVidangeAFaire(), $vidange->getIdVehicule());
+            $this->execRequest('INSERT INTO vidange(cadencevidange, kmdernierevidange, vidangeafaire, idvehicule) VALUES (?,?,?,?)', $param);
+            $id = ($this->execRequest('SELECT LAST_INSERT_ID()'))->fetch();
+            $vidange->setIdVidange($id[0]);
+            return $vidange;
+        }
+
+        public function addCourroie(Courroie $courroie)
+        {
+            $param = array($courroie->getCadenceCourroie(), $courroie->getKmDerniereCourroie(), $courroie->getCourroieARemplacer(), $courroie->getIdVehicule());
+            $this->execRequest('INSERT INTO courroie(cadencecourroie, kmdernierecourroie, courroiearemplacer, idvehicule) VALUES (?,?,?,?)', $param);
+            $id = ($this->execRequest('SELECT LAST_INSERT_ID()'))->fetch();
+            $courroie->setIdCourroie($id[0]);
+            return $courroie;
+        }
+
+        public function addCt()
+        {
+
+        }
+
+        public function addIntervention()
+        {
+
+        }
+
+
+
+       
     }
 
 ?>

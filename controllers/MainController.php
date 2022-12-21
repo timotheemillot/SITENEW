@@ -37,6 +37,12 @@ class MainController
         $indexView->generer([]);
     }
 
+    public function displayPresentation()
+    {
+        $indexView = new View('Presentation');
+        $indexView->generer([]);
+    }
+
 }
 
 

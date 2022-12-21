@@ -94,6 +94,30 @@ class Vehicule{
     public function setAgeParc($ageParc){
         $this->ageParc=$ageParc;
     }
+    public function getVidange()
+    {
+        $vm = new VehiculeManager();
+        return $vm->getVidange($this->idVehicule);
+    }
+
+    public function getCourroie()
+    {
+        $vm = new VehiculeManager();
+        return $vm->getCourroie($this->idVehicule);
+    }
+
+    public function getCt()
+    {
+        $vm = new VehiculeManager();
+        return $vm->getCt($this->idVehicule);
+    }
+
+    public function getIntervention()
+    {
+        $vm = new VehiculeManager();
+        return $vm->getintervention($this->idVehicule);
+    }
+    
 
    
 
