@@ -56,8 +56,26 @@ if (isset($_GET)) {
             case "add-vidange":
                 $VehiculeController->displayAddVidange($_GET['idVehicule']);
                 break;
+            case "del-vidange":
+                $VehiculeController->deleteVidange($_GET['idVidange'], $_GET['idVehicule']);
+                break;
             case "add-courroie":
                 $VehiculeController->displayAddCourroie($_GET['idVehicule']);
+                break;
+            case "del-courroie":
+                $VehiculeController->deleteCourroie($_GET['idCourroie'], $_GET['idVehicule']);
+                break;
+            case "add-ct":
+                $VehiculeController->displayAddCt($_GET['idVehicule']);
+                break;
+            case "del-ct":
+                $VehiculeController->deleteCt($_GET['idCt'], $_GET['idVehicule']);
+                break;
+            case "add-intervention":
+                $VehiculeController->displayAddIntervention($_GET['idVehicule']);
+                break;
+            case "del-intervention":
+                $VehiculeController->deleteIntervention($_GET['idIntervention'], $_GET['idVehicule']);
                 break;
             case "compte":
                 $compteController->displayCompte();

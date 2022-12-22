@@ -184,6 +184,18 @@ class VehiculeController
 
     }
 
+    function deleteVidange($idVidange, $idVehicule)
+    {
+        $vm = new VehiculeManager();
+        $vm->deleteVidange($idVidange);
+        $message = "Donnée vidange supprimée";
+        $indexView = new View('Detail');
+        $indexView->generer([
+            'popup' => $message,
+            'vehicule' => $vm->getById($idVehicule)
+        ]);
+    }
+
     function displayAddCourroie($idVehicule)
     {
          if (isset($_POST['submit']))
@@ -214,7 +226,6 @@ class VehiculeController
          }
          else
          {
-            $vm = new VehiculeManager();
             $indexView = new View('AddCourroie');
             $indexView->generer([
                 'titre' => "Ajouter une donnée courroie",
@@ -230,7 +241,120 @@ class VehiculeController
         return "Donnée courroie ajoutée";
     }
 
+    function deleteCourroie($idCourroie, $idVehicule)
+    {
+        $vm = new VehiculeManager();
+        $vm->deleteCourroie($idCourroie);
+        $message = "Donnée courroie supprimée";
+        $indexView = new View('Detail');
+        $indexView->generer([
+            'popup' => $message,
+            'vehicule' => $vm->getById($idVehicule)
+        ]);
+    }
+
+    function displayAddCt($idVehicule)
+    {
+        if(isset($_POST['submit']))
+        {
+            $dateProchainCt = date('Y-m-d', strtotime($_POST['dateDernierCt']. ' + 4 years'));
+            $ctData = array(
+                'dateDernierCt' => $_POST['dateDernierCt'],
+                'complementaireCt' => $_POST['complementaireCt'],
+                'dateProchainCt' => $dateProchainCt,
+                'idVehicule' => $idVehicule
+            );
+            $ct = new Ct();
+            $ct->hydrate($ctData);
+            $message = $this->addCt($ct);
+            $vm = new VehiculeManager();
+            $vehicule = $vm->getById($idVehicule);
+            $indexView = new View('Detail');
+            $indexView->generer([
+                'vehicule' => $vehicule,
+                'popup' => $message
+            ]);
+        }
+        else
+        {
+            $indexView = new View('AddCt');
+            $indexView->generer([
+                'titre' => "Ajouter un contrôle technique",
+                'idVehicule' => $idVehicule
+            ]);
+        }
+    }
+
+    function addCt(Ct $ct)
+    {
+        $vm = new VehiculeManager();
+        $vm->addCt($ct);
+        return "Contrôle technique ajouté";
+
+    }
+
+
+    function deleteCt($idCt, $idVehicule)
+    {
+        $vm = new VehiculeManager();
+        $vm->deleteCt($idCt);
+        $message = "Controle technique supprimée";
+        $indexView = new View('Detail');
+        $indexView->generer([
+            'popup' => $message,
+            'vehicule' => $vm->getById($idVehicule)
+        ]);
+    }
+
+    function displayAddIntervention($idVehicule)
+    {
+        if(isset($_POST['submit']))
+        {
+            $interventionData = array(
+                'date' => $_POST['date'],
+                'cout' => $_POST['cout'],
+                'kilometre' => $_POST['kilometre'],
+                'description' => $_POST['description'],
+                'idVehicule' => $idVehicule
+            );
+            $intervention = new Intervention();
+            $intervention->hydrate($interventionData);
+            $message = $this->addIntervention($intervention);
+            $vm = new VehiculeManager();
+            $vehicule = $vm->getById($idVehicule);
+            $indexView = new View('Detail');
+            $indexView->generer([
+                'vehicule' => $vehicule,
+                'popup' => $message
+            ]);
+        }
+        else
+        {
+            $indexView = new View('AddIntervention');
+            $indexView->generer([
+                'titre' => "Ajouter une intervention",
+                'idVehicule' => $idVehicule
+            ]);
+        }
+    }
+
+    function addIntervention(Intervention $intervention)
+    {
+        $vm = new VehiculeManager();
+        $vm->addIntervention($intervention);
+        return "Intervention ajoutée";
+    }
+    function deleteIntervention($idIntervention, $idVehicule)
+    {
+        $vm = new VehiculeManager();
+        $vm->deleteIntervention($idIntervention);
+        $message = "Intervention supprimée";
+        $indexView = new View('Detail');
+        $indexView->generer([
+            'popup' => $message,
+            'vehicule' => $vm->getById($idVehicule)
+        ]);
+    }
+
 }
-
-
 ?>

@@ -4,7 +4,7 @@ class Ct{
 
     private int $idCt;
     private string $dateDernierCt;
-    private bool $complementaire;
+    private int $complementaireCt; //bool mais la bdd accepte pas bool ducoup int mais 0 ou 1
     private string $dateProchainCt;
 
     private int $idVehicule;
@@ -46,16 +46,16 @@ class Ct{
 	/**
 	 * @return bool
 	 */
-	public function getComplementaire(): bool {
-		return $this->complementaire;
+	public function getComplementaireCt(): int {
+		return $this->complementaireCt;
 	}
 	
 	/**
 	 * @param bool $complementaire 
 	 * @return self
 	 */
-	public function setComplementaire(bool $complementaire): self {
-		$this->complementaire = $complementaire;
+	public function setComplementaireCt(int $complementaireCt): self {
+		$this->complementaireCt = $complementaireCt;
 		return $this;
 	}
 

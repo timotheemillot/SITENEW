@@ -115,7 +115,7 @@ class Vehicule{
     public function getIntervention()
     {
         $vm = new VehiculeManager();
-        return $vm->getintervention($this->idVehicule);
+        return $vm->getIntervention($this->idVehicule);
     }
     
 

@@ -89,20 +89,30 @@ require_once("models/details/Intervention.php");
 
         public function getCt($idVehicule)
         {
+            $allCt = array();
             $param = array($idVehicule);
-            $ctData = $this->execRequest('SELECT idCt, datedernierct, complementairect, dateprochainct FROM infoct WHERE idVehicule = ?', $param)->fetchAll();
-            $ct = new Ct();
-            $ct->hydrate($ctData);
-            return $ct;
+            $allCtData = $this->execRequest('SELECT idCt, datedernierct, complementairect, dateprochainct FROM ct WHERE idVehicule = ?', $param)->fetchAll();
+            foreach($allCtData as $CtData)
+            {
+                $ct = new Ct();
+                $ct->hydrate($CtData);
+                array_push($allCt, $ct);
+            }
+            return $allCt;
         }
 
         public function getIntervention($idVehicule)
         {
+            $allIntervention = array();
             $param = array($idVehicule);
-            $interventionData = $this->execRequest('SELECT idIntervention, date, cout, kilometre, description FROM intervention WHERE idVehicule = ?', $param)->fetchAll();
-            $intervention = new Intervention();
-            $intervention->hydrate($interventionData);
-            return $intervention;
+            $allInterventionData = $this->execRequest('SELECT idIntervention, date, cout, kilometre, description FROM intervention WHERE idVehicule = ?', $param)->fetchAll();
+            foreach($allInterventionData as $interventionData)
+            {
+                $intervention = new Intervention();
+                $intervention->hydrate($interventionData);
+                array_push($allIntervention, $intervention);
+            }
+            return $allIntervention;
         }
 
         public function addVidange(Vidange $vidange) : Vidange
@@ -123,15 +133,49 @@ require_once("models/details/Intervention.php");
             return $courroie;
         }
 
-        public function addCt()
+        public function addCt(Ct $ct)
         {
+            $param = array($ct->getDateDernierCt(), $ct->getComplementaireCt(), $ct->getDateProchainCt(), $ct->getIdVehicule());
+            $this->execRequest('INSERT INTO ct(datedernierct, complementaireCt, dateprochainct, idvehicule) VALUES (?,?,?,?)', $param);
+            $id = ($this->execRequest('SELECT LAST_INSERT_ID()'))->fetch();
+            $ct->setIdCt($id[0]);
+            return $ct;
+        }
+
+        public function addIntervention(Intervention $intervention)
+        {
+            $param = array($intervention->getDate(), $intervention->getCout(), $intervention->getKilometre(),$intervention->getDescription(), $intervention->getIdVehicule());
+            $this->execRequest('INSERT INTO intervention(date, cout, kilometre,description, idvehicule) VALUES (?,?,?,?,?)', $param);
+            $id = ($this->execRequest('SELECT LAST_INSERT_ID()'))->fetch();
+            $intervention->setIdIntervention($id[0]);
+            return $intervention;
+        }
+
+        function deleteCourroie($idCourroie)
+        {
+            $param = array($idCourroie);
+            $this->execRequest('DELETE FROM courroie WHERE idCourroie = ?', $param);
+        }
+
+        function deleteVidange($idVidange)
+        {
+            $param = array($idVidange);
+            $this->execRequest('DELETE FROM vidange WHERE idVidange = ?', $param);
+        }
+
+        function deleteCt($idCt)
+        {
+            $param = array($idCt);
+            $this->execRequest('DELETE FROM ct WHERE idCt = ?', $param);
 
         }
 
-        public function addIntervention()
+        function deleteIntervention($idIntervention)
         {
-
+            $param = array($idIntervention);
+            $this->execRequest('DELETE FROM intervention WHERE idIntervention = ?', $param);
         }
+
 
 
 

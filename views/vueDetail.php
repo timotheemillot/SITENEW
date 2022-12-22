@@ -23,7 +23,7 @@ foreach($allVidange as $vidange)
             <td>" . $vidange->getCadenceVidange() . "</td>
             <td>" . $vidange->getKmDerniereVidange() . "</td>
             <td>" . $vidangeafaire. "</td>
-            <td> <a href=\"#\">Edit  ||  </a><a href=\"#\">Del</a></td>;
+            <td> <a href=\"#\">Edit  ||  </a><a href=\"index.php?action=del-vidange&idVidange=" . $vidange->getIdVidange() . "&idVehicule=" . $vehicule->getIdVehicule() . "\">Del</a></td>;
         </tr>";
 }
 
@@ -54,7 +54,7 @@ foreach($allCourroie as $courroie)
             <td>" . $courroie->getCadenceCourroie() . "</td>
             <td>" . $courroie->getKmDerniereCourroie() . "</td>
             <td>" . $courroieARemplacer . "</td>
-            <td> <a href=\"#\">Edit  ||  </a><a href=\"#\">Del</a></td>;
+            <td> <a href=\"#\">Edit  ||  </a><a href=\"index.php?action=del-courroie&idCourroie=" . $courroie->getIdCourroie() . "&idVehicule=" . $vehicule->getIdVehicule() . "\">Del</a></td>;
         </tr>";
 }
 
@@ -75,21 +75,26 @@ foreach($allCourroie as $courroie)
 
 $allCt = $vehicule->getCt();
 
+
 foreach($allCt as $Ct)
 {
+    if ($Ct->getComplementaireCt() == 1)
+    $complementaireCt = "Oui";
+    else
+    $complementaireCt = "Non";
     echo "
         <tr>
             <td>" . $Ct->getDateDernierCt() . "</td>
-            <td>" . $Ct->getComplementaire() . "</td>
+            <td>" . $complementaireCt . "</td>
             <td>" . $Ct->getDateProchainCt() . "</td>
-            <td> <a href=\"#\">Edit  ||  </a><a href=\"#\">Del</a></td>;
+            <td> <a href=\"#\">Edit  ||  </a><a href=\"index.php?action=del-ct&idCt=" . $Ct->getIdCt() . "&idVehicule=" . $vehicule->getIdVehicule() . "\">Del</a></td>;
         </tr>";
 }
 
 ?>
 
 </table>
-<a>Ajouter un contrôle technique</a>
+<a href="index.php?action=add-ct&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter un contrôle technique</a>
 
 <table>
 
@@ -112,7 +117,7 @@ foreach($allIntervention as $intervention)
             <td>" . $intervention->getCout() . "</td>
             <td>" . $intervention->getKilometre() . "</td>
             <td>" . $intervention->getDescription() . "</td>
-            <td> <a href=\"#\">Edit  ||  </a><a href=\"#\">Del</a></td>;
+            <td> <a href=\"#\">Edit  ||  </a><a href=\"index.php?action=del-intervention&idIntervention=" . $intervention->getIdIntervention() . "&idVehicule=" . $vehicule->getIdVehicule() . "\">Del</a></td>;
         </tr>";
 }
 
@@ -121,4 +126,4 @@ foreach($allIntervention as $intervention)
 
 
 </table>
-<a>Ajouter une intervention</a>
+<a href="index.php?action=add-intervention&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter une intervention</a>
