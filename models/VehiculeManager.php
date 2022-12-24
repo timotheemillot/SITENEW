@@ -62,7 +62,7 @@ require_once("models/details/Intervention.php");
         {
             $allVidange = array();
             $param = array($idVehicule);
-            $allVidangeData = $this->execRequest('SELECT idVidange, cadencevidange,kmdernierevidange,vidangeafaire FROM vidange WHERE idVehicule = ?', $param)->fetchAll();
+            $allVidangeData = $this->execRequest('SELECT * FROM vidange WHERE idVehicule = ? ORDER BY dateVidange DESC', $param)->fetchAll();
             foreach($allVidangeData as $vidangeData)
             {
                 $vidange = new Vidange();
@@ -77,7 +77,7 @@ require_once("models/details/Intervention.php");
         {
             $allCourroie = array();
             $param = array($idVehicule);
-            $allCourroieData = $this->execRequest('SELECT idCourroie, cadencecourroie,kmdernierecourroie,courroiearemplacer FROM courroie WHERE idVehicule = ?', $param)->fetchAll();
+            $allCourroieData = $this->execRequest('SELECT * FROM courroie WHERE idVehicule = ? ORDER BY dateChangementCourroie DESC', $param)->fetchAll();
             foreach($allCourroieData as $CourroieData)
             {
                 $courroie = new Courroie();
@@ -91,7 +91,7 @@ require_once("models/details/Intervention.php");
         {
             $allCt = array();
             $param = array($idVehicule);
-            $allCtData = $this->execRequest('SELECT idCt, datedernierct, complementairect, dateprochainct FROM ct WHERE idVehicule = ?', $param)->fetchAll();
+            $allCtData = $this->execRequest('SELECT idCt, datedernierct, complementairect, dateprochainct FROM ct WHERE idVehicule = ? ORDER BY datedernierct DESC', $param)->fetchAll();
             foreach($allCtData as $CtData)
             {
                 $ct = new Ct();
@@ -105,7 +105,7 @@ require_once("models/details/Intervention.php");
         {
             $allIntervention = array();
             $param = array($idVehicule);
-            $allInterventionData = $this->execRequest('SELECT idIntervention, date, cout, kilometre, description FROM intervention WHERE idVehicule = ?', $param)->fetchAll();
+            $allInterventionData = $this->execRequest('SELECT idIntervention, date, cout, kilometre, description FROM intervention WHERE idVehicule = ? ORDER BY date DESC', $param)->fetchAll();
             foreach($allInterventionData as $interventionData)
             {
                 $intervention = new Intervention();
@@ -117,20 +117,32 @@ require_once("models/details/Intervention.php");
 
         public function addVidange(Vidange $vidange) : Vidange
         {
-            $param = array($vidange->getCadenceVidange(), $vidange->getKmDerniereVidange(), $vidange->getVidangeAFaire(), $vidange->getIdVehicule());
-            $this->execRequest('INSERT INTO vidange(cadencevidange, kmdernierevidange, vidangeafaire, idvehicule) VALUES (?,?,?,?)', $param);
+            $param = array($vidange->getDateVidange() , $vidange->getKmDerniereVidange(), $vidange->getIdVehicule());
+            $this->execRequest('INSERT INTO vidange(dateVidange ,kmdernierevidange, idvehicule) VALUES (?,?,?)', $param);
             $id = ($this->execRequest('SELECT LAST_INSERT_ID()'))->fetch();
             $vidange->setIdVidange($id[0]);
             return $vidange;
         }
 
+        public function updateCadenceVidange($idVehicule, $cadenceVidange)
+        {
+            $param = array($cadenceVidange, $idVehicule);
+        $this->execRequest('UPDATE vehicule SET cadenceVidange = ? WHERE idVehicule = ?', $param);
+        }
+
         public function addCourroie(Courroie $courroie)
         {
-            $param = array($courroie->getCadenceCourroie(), $courroie->getKmDerniereCourroie(), $courroie->getCourroieARemplacer(), $courroie->getIdVehicule());
-            $this->execRequest('INSERT INTO courroie(cadencecourroie, kmdernierecourroie, courroiearemplacer, idvehicule) VALUES (?,?,?,?)', $param);
+            $param = array($courroie->getDateChangementCourroie(), $courroie->getKmDerniereCourroie(),  $courroie->getIdVehicule());
+            $this->execRequest('INSERT INTO courroie(dateChangementCourroie, kmdernierecourroie, idvehicule) VALUES (?,?,?)', $param);
             $id = ($this->execRequest('SELECT LAST_INSERT_ID()'))->fetch();
             $courroie->setIdCourroie($id[0]);
             return $courroie;
+        }
+
+        public function updateCadenceCourroie($idVehicule, $cadenceCourroie)
+        {
+            $param = array($cadenceCourroie, $idVehicule);
+            $this->execRequest('UPDATE vehicule SET cadenceCourroie = ? WHERE idVehicule = ?', $param);
         }
 
         public function addCt(Ct $ct)

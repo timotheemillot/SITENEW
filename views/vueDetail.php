@@ -1,71 +1,110 @@
 
+
+
 <table>
 
 <th>Cadence des vidanges</th>
-<th>Km parcourus depuis la derniere vidange</th>
 <th>Vidange à faire ?</th>
+<th>Date Vidange</th>
+<th>Km parcourus depuis la derniere vidange</th>
 <th>Options</th>
 
 <?php
 
 $allVidange = $vehicule->getVidange();
 
+if ($allVidange != false) {
 
-foreach($allVidange as $vidange)
-{
-    if ($vidange->getVidangeAFaire() == 1)
+
+    if ($vehicule->getCadenceVidange() < $allVidange[0]->getKmDerniereVidange())
+    {
         $vidangeafaire = "Oui";
+    }
     else
+    {
         $vidangeafaire = "Non";
+    }
 
-    echo "
+    echo "<tr>
+        <td>" . $vehicule->getCadenceVidange() . "</td>
+        <td> " . $vidangeafaire . "</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        </tr>";
+
+    foreach ($allVidange as $vidange) {
+
+
+        echo "
         <tr>
-            <td>" . $vidange->getCadenceVidange() . "</td>
+            <td></td>
+            <td></td>
+            <td>" . $vidange->getDateVidange() . "</td>
             <td>" . $vidange->getKmDerniereVidange() . "</td>
-            <td>" . $vidangeafaire. "</td>
             <td> <a href=\"#\">Edit  ||  </a><a href=\"index.php?action=del-vidange&idVidange=" . $vidange->getIdVidange() . "&idVehicule=" . $vehicule->getIdVehicule() . "\">Del</a></td>;
         </tr>";
+    }
 }
-
 ?>
 
 </table>
-<a href="index.php?action=add-vidange&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter une vidange</a>
+<a href="index.php?action=add-vidange&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter une vidange   |||</a><a href="index.php?action=edit-cadence-vidange&idVehicule=<?=$vehicule->getIdVehicule()?>">Modifier la cadence</a>
 
 <table>
 
 <th>Cadence du changement de courroie</th>
-<th>Km parcourus depuis le dernier changement</th>
 <th>Courroie à remplacer ?</th>
+<th>Date changement de courroie</th>
+<th>Km parcourus depuis le dernier changement de courroie</th>
 <th>Options</th>
 
 <?php
 
 $allCourroie = $vehicule->getCourroie();
 
-foreach($allCourroie as $courroie)
-{
-    if ($courroie->getCourroieARemplacer() == 1)
+if ($allCourroie != false) {
+
+
+    if ($vehicule->getCadenceCourroie() < $allCourroie[0]->getKmDerniereCourroie())
+    {
         $courroieARemplacer = "Oui";
+    }
     else
+    {
         $courroieARemplacer = "Non";
-    echo "
+    }
+
+    echo "<tr>
+        <td>" . $vehicule->getCadenceCourroie() . "</td>
+        <td> " . $courroieARemplacer . "</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        </tr>";
+
+    foreach ($allCourroie as $courroie) {
+
+
+        echo "
         <tr>
-            <td>" . $courroie->getCadenceCourroie() . "</td>
+            <td></td>
+            <td></td>
+            <td>" . $courroie->getDateChangementCourroie() . "</td>
             <td>" . $courroie->getKmDerniereCourroie() . "</td>
-            <td>" . $courroieARemplacer . "</td>
             <td> <a href=\"#\">Edit  ||  </a><a href=\"index.php?action=del-courroie&idCourroie=" . $courroie->getIdCourroie() . "&idVehicule=" . $vehicule->getIdVehicule() . "\">Del</a></td>;
         </tr>";
+    }
 }
 
 ?>
 
 </table>
-<a href="index.php?action=add-courroie&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter une donnée courroie</a>
+<a href="index.php?action=add-courroie&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter une donnée courroie  |||</a><a href="index.php?action=edit-cadence-courroie&idVehicule=<?=$vehicule->getIdVehicule()?>">Modifier la cadence</a>
 
 <table>
 
-<th>Date du dernier controle technique</th>
+<th>Date controle technique</th>
 <th>Complementaire</th>
 <th>date du prochain contrôle technique</th>
 <th>Options</th>

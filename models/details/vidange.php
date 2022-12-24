@@ -3,9 +3,9 @@
 class Vidange{
 
     private int $idVidange;
-    private int $cadenceVidange;
+
+	private string $dateVidange;
     private int $kmDerniereVidange;
-    private int $vidangeAFaire;
 
     private int $idVehicule;
 
@@ -25,21 +25,6 @@ class Vidange{
 		return $this;
 	}
 
-	/**
-	 * @return int
-	 */
-	public function getCadenceVidange(): int {
-		return $this->cadenceVidange;
-	}
-	
-	/**
-	 * @param int $cadenceVidange 
-	 * @return self
-	 */
-	public function setCadenceVidange(int $cadenceVidange): self {
-		$this->cadenceVidange = $cadenceVidange;
-		return $this;
-	}
 
 	/**
 	 * @return int
@@ -57,21 +42,8 @@ class Vidange{
 		return $this;
 	}
 
-	/**
-	 * @return bool
-	 */
-	public function getVidangeAFaire(): int {
-		return $this->vidangeAFaire;
-	}
+
 	
-	/**
-	 * @param bool $vidangeAFaire 
-	 * @return self
-	 */
-	public function setVidangeAFaire(int $vidangeAFaire): self {
-		$this->vidangeAFaire = $vidangeAFaire;
-		return $this;
-	}
 
     public function hydrate(array $donnees)
     {
@@ -101,6 +73,22 @@ class Vidange{
 	 */
 	public function setIdVehicule(int $idVehicule): self {
 		$this->idVehicule = $idVehicule;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getDateVidange(): string {
+		return $this->dateVidange;
+	}
+	
+	/**
+	 * @param string $dateVidange 
+	 * @return self
+	 */
+	public function setDateVidange(string $dateVidange): self {
+		$this->dateVidange = $dateVidange;
 		return $this;
 	}
 }

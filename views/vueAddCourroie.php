@@ -3,11 +3,11 @@
             <form action="index.php?action=add-courroie&idVehicule=<?=$idVehicule?>" method="POST">
                 
                 <input type="hidden" name="idVehicule" value=<?=$idVehicule?>>
-                <label for="cadenceCourroie">Cadence de la courroie : </label>
-                <input name="cadenceCourroie" type="number" required value=<?php if(isset($courroie)) echo $vehicule->getMarque();?>> 
+                <label for="dateChangementCourroie">Date du changement de la courroie</label>
+                <input type="date" name="dateChangementCourroie" required>
                 <br>
                 <label for="kmDerniereCourroie">Kilometres parcourus depuis le dernier changement de courroie : </label>
-                <input name="kmDerniereCourroie" type="number" required value=<?php if(isset($courroie)) echo $vehicule->getModele();?>>
+                <input name="kmDerniereCourroie" type="number" required>
                 <br>
                 <input class="button" name="submit" type="submit" value="Valider">
                 

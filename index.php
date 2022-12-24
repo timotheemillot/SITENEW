@@ -62,8 +62,14 @@ if (isset($_GET)) {
             case "add-courroie":
                 $VehiculeController->displayAddCourroie($_GET['idVehicule']);
                 break;
+            case "edit-cadence-vidange":
+                $VehiculeController->displayEditCadenceVidange($_GET['idVehicule']);
+                break;
             case "del-courroie":
                 $VehiculeController->deleteCourroie($_GET['idCourroie'], $_GET['idVehicule']);
+                break;
+            case "edit-cadence-courroie":
+                $VehiculeController->displayEditCadenceCourroie($_GET['idVehicule']);
                 break;
             case "add-ct":
                 $VehiculeController->displayAddCt($_GET['idVehicule']);

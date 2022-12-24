@@ -142,15 +142,10 @@ class VehiculeController
          {
             $vm = new VehiculeManager();
             $vehicule = $vm->getById($idVehicule);
-            if ($_POST['kmDerniereVidange'] > $_POST['cadenceVidange'])
-                $vidangeAFaire = 1;
-            else
-                $vidangeAFaire = 0;
 
             $vidangeData = array(
-                "cadenceVidange" => $_POST['cadenceVidange'],
+                "dateVidange" =>$_POST['dateVidange'],
                 "kmDerniereVidange" => $_POST['kmDerniereVidange'],
-                "vidangeAFaire" => $vidangeAFaire,
                 "idVehicule" => $idVehicule
             );
             $vidange = new Vidange();
@@ -196,21 +191,41 @@ class VehiculeController
         ]);
     }
 
+    function displayEditCadenceVidange($idVehicule)
+    {   
+        $vm = new VehiculeManager();
+        if(isset($_POST['submit']))
+        {
+            $vm->updateCadenceVidange($idVehicule, $_POST['cadenceVidange']);
+            $indexView = new View('detail');
+            $indexView->generer([
+                'popup' => "Parametres modifiés",
+                'vehicule' => $vm->getById($idVehicule)
+
+            ]);
+
+        }
+        else
+        {
+            $indexView = new View('EditCadenceVidange');
+            $indexView->generer([
+                'titre' => "Modifier la cadence des vidanges",
+                'cadenceVidange' => $vm->getById($idVehicule)->getCadenceVidange(),
+                'idVehicule' => $idVehicule
+            ]);
+
+        }
+    }
+
     function displayAddCourroie($idVehicule)
     {
          if (isset($_POST['submit']))
          {
             $vm = new VehiculeManager();
             $vehicule = $vm->getById($idVehicule);
-            if ($_POST['kmDerniereCourroie'] > $_POST['cadenceCourroie'])
-                $courroieARemplacer = 1;
-            else
-                $courroieARemplacer = 0;
-
             $courroieData = array(
-                "cadenceCourroie" => $_POST['cadenceCourroie'],
+                "dateChangementCourroie" => $_POST['dateChangementCourroie'],
                 "kmDerniereCourroie" => $_POST['kmDerniereCourroie'],
-                "courroieARemplacer" => $courroieARemplacer,
                 "idVehicule" => $idVehicule
             );
             $courroie = new Courroie();
@@ -252,6 +267,34 @@ class VehiculeController
             'vehicule' => $vm->getById($idVehicule)
         ]);
     }
+
+    function displayEditCadenceCourroie($idVehicule)
+    {   
+        $vm = new VehiculeManager();
+        if(isset($_POST['submit']))
+        {
+            $vm->updateCadenceCourroie($idVehicule, $_POST['cadenceCourroie']);
+            $indexView = new View('detail');
+            $indexView->generer([
+                'popup' => "Parametres modifiés",
+                'vehicule' => $vm->getById($idVehicule)
+
+            ]);
+
+        }
+        else
+        {
+            $indexView = new View('EditCadenceCourroie');
+            $indexView->generer([
+                'titre' => "Modifier la cadence du changement de la courroie",
+                'cadenceCourroie' => $vm->getById($idVehicule)->getCadenceCourroie(),
+                'idVehicule' => $idVehicule
+            ]);
+
+        }
+    }
+
+    
 
     function displayAddCt($idVehicule)
     {

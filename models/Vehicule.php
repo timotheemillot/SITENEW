@@ -14,6 +14,10 @@ class Vehicule{
     private int $puissance;
     private int $ageParc;
 
+    private ?int $cadenceVidange;
+
+    private ?int $cadenceCourroie;
+
     public function __construct()
     {
 
@@ -137,6 +141,44 @@ class Vehicule{
     }
 
 
+
+	/**
+	 * @return int
+	 */
+	public function getCadenceVidange(): int {
+		if(isset($this->cadenceVidange))
+            return $this->cadenceVidange;
+        else
+            return 0;
+	}
+	
+	/**
+	 * @param int $candenceVidange 
+	 * @return self
+	 */
+	public function setCadenceVidange(?int $cadenceVidange): self {
+		$this->cadenceVidange = $cadenceVidange;
+		return $this;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getCadenceCourroie(): int {
+        if (isset($this->cadenceCourroie))
+            return $this->cadenceCourroie;
+        else
+            return 0;
+	}
+	
+	/**
+	 * @param int $cadenceCourroie 
+	 * @return self
+	 */
+	public function setCadenceCourroie(?int $cadenceCourroie): self {
+		$this->cadenceCourroie = $cadenceCourroie;
+		return $this;
+	}
 }
 
 ?>
