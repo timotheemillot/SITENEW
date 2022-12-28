@@ -179,6 +179,7 @@ class Vehicule{
 		$this->cadenceCourroie = $cadenceCourroie;
 		return $this;
 	}
+
 }
 
 ?>

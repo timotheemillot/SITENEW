@@ -10,6 +10,8 @@ class Compte{
     private string $motDePasse;
     private string $dateDeNaissance;
 
+	private int $isAdmin;
+
 
 
 	/**
@@ -154,6 +156,22 @@ class Compte{
           }
        }
     }
+
+	/**
+	 * @return int
+	 */
+	public function getIsAdmin(): int {
+		return $this->isAdmin;
+	}
+	
+	/**
+	 * @param int $isAdmin 
+	 * @return self
+	 */
+	public function setIsAdmin(int $isAdmin): self {
+		$this->isAdmin = $isAdmin;
+		return $this;
+	}
 }
 
 ?>

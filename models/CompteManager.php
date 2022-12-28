@@ -87,7 +87,6 @@ class CompteManager extends Model{
             "numero" => $resNumero
         );
 
-        var_dump($res);
         return $res;
     }
 }

@@ -18,10 +18,12 @@ class MainController
     {
         $indexView = new View('Vehicule');
         $vm = new VehiculeManager();
+        $cm = new CompteManager();
         $allVehicule = $vm->getAll();
         $indexView->generer([
             'allVehicule' => $allVehicule,
-            'popup' => $popup
+            'popup' => $popup,
+            'compte' => $cm->selectByIdentifiant($_COOKIE['compte'])
         ]);
     }
 

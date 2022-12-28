@@ -14,8 +14,13 @@
             <th>Assurance</th>
             <th>Puissance</th>
             <th>Age Parc</th>
-            <th>Details</th>
-            <th>Outils</th>
+    
+    <?php      
+            //si le compte est admin on affiche les options en plus  
+            if ($compte->getIsAdmin() == 1) 
+                echo"<th>Details</th>
+                        <th>Outils</th>";
+    ?>
         </tr>
 
     <?php
@@ -31,10 +36,11 @@
                 <td>" . $vehicule->getCritair() . "</td>
                 <td>" . $vehicule->getAssurance() . "</td>
                 <td>" . $vehicule->getPuissance() . "</td>
-                <td>" . $vehicule->getAgeParc() . "</td>
-                <td> <a href=\"index.php?action=detail-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\">Details</a>
-                <td> <a href=\"index.php?action=edit-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\">Edit  ||  </a><a href=\"index.php?action=del-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\">Del</a></td>
-            <tr>";
+                <td>" . $vehicule->getAgeParc() . "</td>";
+                if ($compte->getIsAdmin() == 1) // si le compte est admin on affiche les options en plus
+                echo "<td> <a href=\"index.php?action=detail-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\">Details</a>
+                <td> <a href=\"index.php?action=edit-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\">Edit  ||  </a><a href=\"index.php?action=del-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\">Del</a></td>";
+            echo "</tr>";
         }
     ?>
 
@@ -44,8 +50,12 @@
 
     </table>    
         
-        <div class="bout"> 
-        <a href="index.php?action=add-vehicule">Ajouter un véhicule</a>
-        <div>
+    <?php
+        //si le compte est admin on propose d'ajouter un véhicule
+        if($compte->getIsAdmin() == 1)
+        echo"<div class=\"bout\"> 
+        <a href=\"index.php?action=add-vehicule\">Ajouter un véhicule</a>
+        <div>"
+    ?>
           
 </div>
