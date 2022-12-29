@@ -1,14 +1,14 @@
 
 
 
-<table>
-
-<th>Cadence des vidanges</th>
-<th>Vidange à faire ?</th>
-<th>Date Vidange</th>
-<th>Km parcourus depuis la derniere vidange</th>
-<th>Options</th>
-
+<table id="listcar">
+<tr id="lignehead">
+    <th>Cadence des vidanges</th>
+    <th>Vidange à faire ?</th>
+    <th>Date Vidange</th>
+    <th>Km parcourus depuis la derniere vidange</th>
+    <th>Options</th>
+</tr>
 <?php
 
 $allVidange = $vehicule->getVidange();
@@ -49,16 +49,23 @@ if ($allVidange != false) {
 ?>
 
 </table>
-<a href="index.php?action=add-vidange&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter une vidange   |||</a><a href="index.php?action=edit-cadence-vidange&idVehicule=<?=$vehicule->getIdVehicule()?>">Modifier la cadence</a>
+<div class="bout">
+<a href="index.php?action=add-vidange&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter une vidange</a>
+</div>
 
-<table>
 
-<th>Cadence du changement de courroie</th>
-<th>Courroie à remplacer ?</th>
-<th>Date changement de courroie</th>
-<th>Km parcourus depuis le dernier changement de courroie</th>
-<th>Options</th>
+<div class="bout">
+<a href="index.php?action=edit-cadence-vidange&idVehicule=<?=$vehicule->getIdVehicule()?>">Modifier la cadence</a>
+</div>
 
+<table id="listcar">
+<tr id="lignehead">
+    <th>Cadence du changement de courroie</th>
+    <th>Courroie à remplacer ?</th>
+    <th>Date changement de courroie</th>
+    <th>Km parcourus depuis le dernier changement de courroie</th>
+    <th>Options</th>
+</tr>
 <?php
 
 $allCourroie = $vehicule->getCourroie();
@@ -100,15 +107,22 @@ if ($allCourroie != false) {
 ?>
 
 </table>
-<a href="index.php?action=add-courroie&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter une donnée courroie  |||</a><a href="index.php?action=edit-cadence-courroie&idVehicule=<?=$vehicule->getIdVehicule()?>">Modifier la cadence</a>
 
-<table>
+<div class="bout">
+    <a href="index.php?action=add-courroie&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter une donnée courroie</a>
+</div>
 
-<th>Date controle technique</th>
-<th>Complementaire</th>
-<th>date du prochain contrôle technique</th>
-<th>Options</th>
+<div class="bout">
+    <a href="index.php?action=edit-cadence-courroie&idVehicule=<?=$vehicule->getIdVehicule()?>">Modifier la cadence</a>
+</div>
 
+<table id="listcar">
+<tr id="lignehead">
+    <th>Date controle technique</th>
+    <th>Complementaire</th>
+    <th>date du prochain contrôle technique</th>
+    <th>Options</th>
+</tr>
 
 <?php
 
@@ -133,16 +147,18 @@ foreach($allCt as $Ct)
 ?>
 
 </table>
-<a href="index.php?action=add-ct&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter un contrôle technique</a>
+<div class="bout">
+    <a href="index.php?action=add-ct&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter un contrôle technique</a>
+</div>
 
-<table>
-
-<th>Date</th>
-<th>Cout</th>
-<th>Kilometre</th>
-<th>Description</th>
-<th>Options</th>
-
+<table id="listcar">
+<tr id="lignehead">
+    <th>Date</th>
+    <th>Cout</th>
+    <th>Kilometre</th>
+    <th>Description</th>
+    <th>Options</th>
+</tr>
 
 <?php
 
@@ -165,4 +181,6 @@ foreach($allIntervention as $intervention)
 
 
 </table>
+<div class="bout">
 <a href="index.php?action=add-intervention&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter une intervention</a>
+</div>
