@@ -3,10 +3,12 @@
 require_once('controllers/MainController.php');
 require_once('controllers/CompteController.php');
 require_once('controllers/VehiculeController.php');
+require_once('controllers/StatsController.php');
 
 $mainController = new MainController();
 $VehiculeController = new VehiculeController();
 $compteController = new CompteController();
+$statsController = new StatsController();
 
 if (!isset($_COOKIE['compte']) && isset($_GET['action']))
 {
@@ -89,6 +91,7 @@ if (isset($_GET)) {
             case "reservation":
                 break;
             case "statistique":
+                $statsController->displayStatistique();
                 break;
             case "contact":
                 $mainController->displayContact();

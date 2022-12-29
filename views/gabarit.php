@@ -18,7 +18,7 @@
     <ul>
         <li><a href="index.php?action=vehicule">Véhicule</a></li>
         <li><a href="#">Réservation</a></li>
-        <li><a href="#">Statistique</a></li>
+        <li><a href="index.php?action=statistique">Statistique</a></li>
     </ul>
     <a href="index.php?action=compte"><img  src="public/img/compte.png" class="compte" alt="" ></a>
 </nav>

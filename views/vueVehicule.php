@@ -13,20 +13,24 @@
             <th>Vignette Critair</th>
             <th>Assurance</th>
             <th>Puissance</th>
-            <th>Age Parc</th>
+            <!--<th>Age Parc</th>-->
+
     
     <?php      
             //si le compte est admin on affiche les options en plus  
             if ($compte->getIsAdmin() == 1) 
-                echo"<th>Details</th>
-                        <th>Outils</th>";
+                echo"<th>Disponible ?</th>
+                <th>Details</th>
+                <th>Outils</th>";
     ?>
         </tr>
 
     <?php
         foreach ($allVehicule as $vehicule) 
         {
-            echo"<tr>
+        if (($vehicule->getDisponible() == 1 && $compte->getIsAdmin() == 0) || $compte->getIsAdmin() == 1) 
+        {
+            echo "<tr>
                 <td>" . $vehicule->getMarque() . "</td>
                 <td>" . $vehicule->getModele() . "</td>
                 <td>" . $vehicule->getImmatriculation() . "</td>
@@ -35,12 +39,20 @@
                 <td>" . $vehicule->getMiseEnService() . "</td>
                 <td>" . $vehicule->getCritair() . "</td>
                 <td>" . $vehicule->getAssurance() . "</td>
-                <td>" . $vehicule->getPuissance() . "</td>
-                <td>" . $vehicule->getAgeParc() . "</td>";
-                if ($compte->getIsAdmin() == 1) // si le compte est admin on affiche les options en plus
+                <td>" . $vehicule->getPuissance() . "</td>";
+            //<td>" . $vehicule->getAgeParc() . "</td>";
+        }
+            if ($compte->getIsAdmin() == 1)// si le compte est admin on affiche les options en plus
+            {
+                if ($vehicule->getDisponible() == 1)
+                    echo "<td> Disponible </td>";
+                else
+                    echo "<td>Indisponible</td>";
+
                 echo "<td> <a href=\"index.php?action=detail-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\">Details</a>
                 <td> <a href=\"index.php?action=edit-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\">Edit  ||  </a><a href=\"index.php?action=del-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\">Del</a></td>";
-            echo "</tr>";
+            }
+                echo "</tr>";
         }
     ?>
 

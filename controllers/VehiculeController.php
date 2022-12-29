@@ -22,8 +22,8 @@ class VehiculeController
                 "miseenservice" => $_POST['miseenservice'],
                 "critair" => $_POST['critair'],
                 "assurance" => $_POST['assurance'],
-                "puissance" => $_POST['puissance'],
-                "ageparc" => $_POST['ageparc']
+                "puissance" => $_POST['puissance']
+                //"ageparc" => $_POST['ageparc']
             ); 
             $vehicule = new Vehicule();
             $vehicule->hydrate($vehiculeData);
@@ -72,16 +72,19 @@ class VehiculeController
                 "critair" => $_POST['critair'],
                 "assurance" => $_POST['assurance'],
                 "puissance" => $_POST['puissance'],
-                "ageparc" => $_POST['ageparc']
+                "disponible" => $_POST['disponible']
+                //"ageparc" => $_POST['ageparc']
             ); 
             $vehicule = new Vehicule();
             $vehicule->hydrate($vehiculeData);
             $this->editVehicule($vehicule);
             $indexView = new View('Vehicule');
             $vm = new VehiculeManager();
+            $cm = new CompteManager();
             $indexView->generer([
                 'popup' => "Vehicule modifié",
-                'allVehicule' => $vm->getAll()
+                'allVehicule' => $vm->getAll(),
+                'compte' => $cm->selectByIdentifiant($_COOKIE['compte'])
             ]);
         }
         else

@@ -23,6 +23,21 @@ require_once("models/details/Intervention.php");
             return $allVehiculeTab;
         }
 
+        public function getAllDisponible() : array
+        {
+            $allVehiculeDispoData = ($this->execRequest('SELECT * FROM Vehicule WHERE disponible = 1'))->fetchAll();
+            $allVehiculeDispoTab = array();
+            
+            foreach($allVehiculeDispoData as $vehiculeDispoData)
+            {
+                $vehicule = new Vehicule();
+                $vehicule->hydrate($vehiculeDispoData);
+                array_push($allVehiculeDispoTab, $vehicule);
+            }
+            return $allVehiculeDispoTab;
+        }
+        
+
         public function getById(int $idvehicule): ?Vehicule
         {
             $vehicule = null;
@@ -37,7 +52,7 @@ require_once("models/details/Intervention.php");
 
         function createVehicule(Vehicule $vehicule) : Vehicule
         {
-            $param = array($vehicule->getMarque(), $vehicule->getModele(), $vehicule->getImmatriculation(), $vehicule->getSite(), $vehicule->getCarburant(), $vehicule->getMiseEnService(), $vehicule->getCritair(), $vehicule->getAssurance(), $vehicule->getPuissance(), $vehicule->getAgeParc());
+        $param = array($vehicule->getMarque(), $vehicule->getModele(), $vehicule->getImmatriculation(), $vehicule->getSite(), $vehicule->getCarburant(), $vehicule->getMiseEnService(), $vehicule->getCritair(), $vehicule->getAssurance(), $vehicule->getPuissance()/*, $vehicule->getAgeParc()*/);
             $req = $this->execRequest('INSERT INTO Vehicule(marque,modele,immatriculation,site,carburant,miseenservice,critair,assurance,puissance,ageparc) VALUES (?,?,?,?,?,?,?,?,?,?)',$param);
             $id = ($this->execRequest('SELECT LAST_INSERT_ID()'))->fetch();
             $vehicule->setIdVehicule($id[0]);
@@ -47,8 +62,8 @@ require_once("models/details/Intervention.php");
 
         public function editVehicule(Vehicule $vehicule)
         {
-            $param = array($vehicule->getMarque(), $vehicule->getModele(), $vehicule->getImmatriculation(), $vehicule->getSite(), $vehicule->getCarburant(), $vehicule->getMiseEnService(), $vehicule->getCritair(), $vehicule->getAssurance(), $vehicule->getPuissance(), $vehicule->getAgeParc() , $vehicule->getIdVehicule());
-            $req = $this->execRequest('UPDATE Vehicule SET marque = ?,modele = ?,immatriculation = ?,site = ?,carburant = ?,miseenservice = ?,critair = ?,assurance = ?,puissance = ?,ageparc = ? WHERE idVehicule = ?',$param);
+            $param = array($vehicule->getMarque(), $vehicule->getModele(), $vehicule->getImmatriculation(), $vehicule->getSite(), $vehicule->getCarburant(), $vehicule->getMiseEnService(), $vehicule->getCritair(), $vehicule->getAssurance(), $vehicule->getPuissance(), /*$vehicule->getAgeParc(),*/ $vehicule->getDisponible(), $vehicule->getIdVehicule());
+            $req = $this->execRequest('UPDATE Vehicule SET marque = ?,modele = ?,immatriculation = ?,site = ?,carburant = ?,miseenservice = ?,critair = ?,assurance = ?,puissance = ?,/*ageparc = ?,*/ disponible = ? WHERE idVehicule = ?',$param);
         }
 
         public function deleteVehicule(int $idVehicule)

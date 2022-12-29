@@ -1,6 +1,6 @@
 <div class = "form">
             <h2><?=$titre?></h2>
-            <form id="addVehiculeForm" action=<?php echo "index.php?action="; if (isset($vehicule)) echo "edit-vehicule"; else echo "add-vehicule"; ?> method="POST">
+            <form id="addVehiculeForm" action=<?php echo "index.php?action="; if (isset($vehicule)) echo "edit-vehicule&idVehicule=" . $vehicule->getIdVehicule(); else echo "add-vehicule"; ?> method="POST">
                 
                 <?php if(isset($vehicule)) echo "<input type=\"hidden\" name=\"idVehicule\" value=". $vehicule->getIdVehicule() .">";?>
                 <label for="marque">Marque : </label>
@@ -38,9 +38,15 @@
                 <label for="puissance">Puissance : </label>
                 <input name="puissance" type="number" value=<?php if(isset($vehicule)) echo $vehicule->getPuissance();?>>
                 <br>
-                <label for="ageparc">Age du parc : </label>
-                <input name="ageparc" type="number" value=<?php if(isset($vehicule)) echo $vehicule->getAgeParc();?>>
+                <label>Disponible ?</label> <br>
+                <label for="oui">Oui</label>
+                <input type="radio" id="oui" name="disponible" value="1" <?php if($vehicule->getDisponible() == 1) echo"checked=true"?>>
+                <label for="non">Non</label>
+                <input type="radio" id="non" name="disponible" value="0" <?php if($vehicule->getDisponible() == 0) echo"checked=true"?>>
                 <br>
+                <!--<label for="ageparc">Age du parc : </label>
+                <input name="ageparc" type="number" value=<?php if(isset($vehicule)) echo $vehicule->getAgeParc();?>>
+                <br>-->
                 <input class="button" name="submit" type="submit" value="Valider">
                 
             </form>

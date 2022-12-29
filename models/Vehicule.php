@@ -12,7 +12,8 @@ class Vehicule{
     private int $critair;
     private string $assurance;
     private int $puissance;
-    private int $ageParc;
+    private int $disponible; // 1 pour oui, 0 pour non
+    //private int $ageParc;
 
     private ?int $cadenceVidange;
 
@@ -180,6 +181,22 @@ class Vehicule{
 		return $this;
 	}
 
+
+	/**
+	 * @return int
+	 */
+	public function getDisponible(): int {
+		return $this->disponible;
+	}
+	
+	/**
+	 * @param int $disponible 
+	 * @return self
+	 */
+	public function setDisponible(int $disponible): self {
+		$this->disponible = $disponible;
+		return $this;
+	}
 }
 
 ?>

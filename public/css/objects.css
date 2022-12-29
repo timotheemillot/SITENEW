@@ -387,3 +387,43 @@ span
 
 /*----------PRESENTATION-END----------*/
 
+
+
+#statButtonTable
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.statButton a {
+    text-align: center;
+    padding: 5px 20px;
+    text-decoration:none ;
+    color : black;
+    border: 1px solid black;
+    
+    font-size: 18px;
+    transition: 0.3s;
+    box-shadow: 0 7px rgb(182, 214, 243);
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 2;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+
+}
+
+.statButton a:hover{
+    background-color: #212529;
+    color: white;
+}
+
+.statButton a:active{
+    background-color: rgb(1, 99, 177);
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
