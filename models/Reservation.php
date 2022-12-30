@@ -5,6 +5,7 @@ class Reservation{
     private int $idReservation;
     private string $nom;
     private string $date;
+    private string $duree;
     private string $vehicule;
     private int $nombrecovoit;
 
@@ -34,6 +35,13 @@ class Reservation{
     }
     public function setDate($date){
         $this->date = $date;
+    }
+
+    public function getDurée(){
+        return $this->duree;
+    }
+    public function setDurée($duree){
+        $this->duree = $duree;
     }
 
 

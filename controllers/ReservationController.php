@@ -13,6 +13,8 @@ class ReservationController{
     function displayAddReservation(?string $error = null) : void
     {
 
+
+
         if(isset($_POST['submit']))
         {
             $cm = new CompteManager();
@@ -24,6 +26,7 @@ class ReservationController{
             $reservationData = array(
                 "Nom" => $compte->getNom(),
                 "Date" => $_POST['date'],
+                "Durée" => $_POST['duree'],
                 "véhicule" => $_POST['vehicule'],
                 "Nombre_covoit" => $_POST['numbe']
             ); 
@@ -64,17 +67,24 @@ class ReservationController{
         $reservation = $rm->getById($idReservation);
         if(isset($vehicule))
         {
-            $message = "Erreur lors de la suppresion";
+            $message = "Erreur lors de la suppression";
         }
         else
         {
             $message = "reservation supprimé";
         }
+                
+        $year = Date('Y');
+        $month = Date('m');
+        $day = Date('d');
+        $date = $year . "-" . $month . "-" . $day;
+
 
         $indexView = new View('HistoriqueReservation');
         $indexView->generer([
             'popup' => $message,
-            'allreservation' => $rm->getAll()
+            'allreservation' => $rm->getAll(),
+            'date' => $date
         ]);
     }
 
@@ -102,8 +112,17 @@ class ReservationController{
         $indexView = new View('HistoriqueReservation');
         $rm = new ReservationManager();
         $allreservation = $rm->getAll();
+
+                
+        $year = Date('Y');
+        $month = Date('m');
+        $day = Date('d');
+        $date = $year . "-" . $month . "-" . $day;
+
+
         $indexView->generer(['allreservation' => $allreservation,
-                              'popup' => $error]);
+                              'popup' => $error,
+                              'date' => $date]);
     }
 
 }

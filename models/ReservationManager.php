@@ -37,8 +37,8 @@ class ReservationManager extends Model{
     function createReservation(Reservation $reservation) : Reservation
     {
         if($reservation->getVéhicule() != ""){
-            $param = array($reservation->getNom(), $reservation->getDate(), $reservation->getVéhicule(), $reservation->getNombre_covoit());
-            $req = $this->execRequest('INSERT INTO reservation(Nom, date, Véhicule, Nombre_covoit) VALUES (?,?,?,?)',$param);
+            $param = array($reservation->getNom(), $reservation->getDate(), $reservation->getDurée(), $reservation->getVéhicule(), $reservation->getNombre_covoit());
+            $req = $this->execRequest('INSERT INTO reservation(Nom, date, Durée, Véhicule, Nombre_covoit) VALUES (?,?,?,?,?)',$param);
             $id = ($this->execRequest('SELECT LAST_INSERT_ID()'))->fetch();
             $reservation->setIdReservation($id[0]);
         }

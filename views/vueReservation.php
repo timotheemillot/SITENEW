@@ -1,4 +1,4 @@
-    <script type="text/javascript">
+<script type="text/javascript">
          
          jQuery(function($){
                $('.month').hide();
@@ -41,15 +41,24 @@
         <form action="index.php?action=add-reservation" method="POST"> 
                     <div id="divform" > 
                         <div class="divinput">
-                         <select  name="vehicule" placeholder="Véhicule" class="textinput" >    
+                         <select  name="vehicule" placeholder="Véhicule" required class="textinput" >    
                                 <?php
                                     foreach($allVehicule as $vehicule)
                                     {
-                                        echo "<option >" . $vehicule->getMarque() . " - " . $vehicule->getModele() . "<option>";
+                                        echo "<option >" . $vehicule->getMarque() . " - " . $vehicule->getModele() . "</option>";
                                     }
                                  ?>
-                                 </select> 
+                                 </select>  
                         </div>
+
+                        <div class="divinput">
+                         <select  name="duree" placeholder="durée" required class="textinput" >    
+                              <option> 8h - 19h</option>
+                              <option> 8h - 13h</option>
+                              <option> 13h - 19h</option>
+                         </select>  
+                        </div>
+
 
                         <div class="divinput">
                             <input type="date"  class="textinput" name="date"  required placeholder="Date de réservation">  
@@ -59,8 +68,6 @@
                         </div>
 
                         <p id="submit">
-                        <br>
-                        <br>
                           <input class="button" type="submit" name="submit" value="Réserver" accesskey="enter">
                         </p>
                         <br>
