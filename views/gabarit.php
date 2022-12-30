@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="public/css/objects.css"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" sizes="16x16" href="public/img/logo.png">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <title><?= $titre ?></title>
 </head>
 <body>
@@ -16,8 +17,9 @@
 
     <a href="index.php"><img src="public/img/logo.png" class="logo" alt=""></a>
     <ul>
+         <li><a href="index.php?action=accueil">Accueil</a></li>
         <li><a href="index.php?action=vehicule">Véhicule</a></li>
-        <li><a href="#">Réservation</a></li>
+        <li><a href="index.php?action=Reservation">Réservation</a></li>
         <li><a href="index.php?action=statistique">Statistique</a></li>
     </ul>
     <a href="index.php?action=compte"><img  src="public/img/compte.png" class="compte" alt="" ></a>

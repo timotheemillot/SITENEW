@@ -9,6 +9,7 @@ $mainController = new MainController();
 $VehiculeController = new VehiculeController();
 $compteController = new CompteController();
 $statsController = new StatsController();
+$reservationController = new ReservationController();
 
 if (!isset($_COOKIE['compte']) && isset($_GET['action']))
 {
@@ -102,6 +103,21 @@ if (isset($_GET)) {
             case "presentation":
                 $mainController->displayPresentation();
                 break;
+            case "Reservation":
+                    $mainController->displayReservation();
+                    break;
+            case "add-reservation":
+                    $reservationController->displayAddReservation();
+                    break;
+            case "HistRes":
+                        $reservationController->displayHistReservation();
+                    break;
+            case "del-reservation":
+                        $reservationController->deleteReservation($_GET['idReservation']);
+                    break;
+            case "next-year":
+                        $reservationController->NextYear($_GET['year']);
+                    break;
             default:
                 $mainController->Index();
                 break;
