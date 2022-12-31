@@ -49,8 +49,8 @@
                 else
                     echo "<td>Indisponible</td>";
 
-                echo "<td> <a href=\"index.php?action=detail-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\"><img src=\"public/img/edit.png\"></a>
-                <td> <a href=\"index.php?action=edit-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\">Edit  ||  </a><a href=\"index.php?action=del-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\">Del</a></td>";
+                echo "<td> <a href=\"index.php?action=detail-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\">Details</a>
+                <td> <a href=\"index.php?action=edit-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\"><img class=\"imgOutils\" src=\"../public/img/edit2.png\"></a><a href=\"index.php?action=del-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\"><img class=\"imgOutils\" src=\"../public/img/delete.png\"></a></td>";
             }
                 echo "</tr>";
         }
