@@ -56,6 +56,32 @@ class ReservationManager extends Model{
 
     }
 
+
+    public function searchRequest(string $champ) : array 
+    {
+           
+        $res = array();
+        switch($champ)
+        {
+            case "Nom" : $searchRes = ($this->execRequest('SELECT * FROM reservation order by Nom'))->fetchAll(); break;
+            case "Date-Cr" : $searchRes = ($this->execRequest('SELECT * FROM reservation order by Date'))->fetchAll(); break;
+            case "Date-Dé" : $searchRes = ($this->execRequest('SELECT * FROM reservation order by Date DESC'))->fetchAll(); break;
+            case "Durée" : $searchRes = ($this->execRequest('SELECT * FROM reservation order by Durée'))->fetchAll(); break;
+            case "Véhicule" : $searchRes = ($this->execRequest('SELECT * FROM reservation order by Véhicule'))->fetchAll(); break;
+            case "Nombre_covoit" : $searchRes = ($this->execRequest('SELECT * FROM reservation order by Nombre_covoit'))->fetchAll(); break;
+        }
+        foreach($searchRes as $data)
+        {   
+            $reservation = new Reservation();
+            $reservation->hydrate($data);
+
+            array_push($res, $reservation);
+        }
+
+
+        return $res;
+    }
+
 }
 
 ?>

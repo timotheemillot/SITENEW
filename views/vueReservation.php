@@ -34,7 +34,7 @@
     ?>
 
     <div class="periods">
-        <div class="year" id="nextyear" ><?php echo $year?> <a  href="index.php?action=next-year&year=" . $year > ➱ </a>  </div>
+        <div class="year" id="nextyear" ><?php echo $year?> <a  href="index.php?action=Reservation"> ⇚ </a> <a  href="index.php?action=next-year&year=" . $year > ⇛ </a>  </div>
         <div class="months">
 
             
@@ -45,7 +45,9 @@
                                 <?php
                                     foreach($allVehicule as $vehicule)
                                     {
-                                        echo "<option >" . $vehicule->getMarque() . " - " . $vehicule->getModele() . "</option>";
+                                        if (($vehicule->getDisponible() == 1 && $admin == 0) || $admin == 1) {
+                                         echo "<option >" . $vehicule->getMarque() . " - " . $vehicule->getModele() . "</option>";
+                                        }
                                     }
                                  ?>
                                  </select>  
@@ -53,18 +55,22 @@
 
                         <div class="divinput">
                          <select  name="duree" placeholder="durée" required class="textinput" >    
-                              <option> 8h - 19h</option>
-                              <option> 8h - 13h</option>
+                              <option> 08h - 19h</option>
+                              <option> 08h - 13h</option>
                               <option> 13h - 19h</option>
                          </select>  
                         </div>
+
+                        <!--<div class="divinput">
+                            <input type="text"  class="textinput" name="duree"  required placeholder="durée">  
+                        </div>-->
 
 
                         <div class="divinput">
                             <input type="date"  class="textinput" name="date"  required placeholder="Date de réservation">  
                         </div>
                         <div class="divinput">
-                            <input type="number"  class="textinput" name="numbe"  required placeholder="Nombre de personne">  
+                            <input type="number"  class="textinput" name="numbe"  required placeholder="Nombre de personne" max=4>  
                         </div>
 
                         <p id="submit">
@@ -137,6 +143,6 @@
             </div>
             <?php endforeach; ?>
 
-            <?php if($admin == 1)echo "<a href=\"index.php?action=HistRes\" id=\"lien\">réservation</a> "?>
+            <?php if($admin == 1)echo "<a href=\"index.php?action=HistRes\" id=\"lien\">Consulter les réservations</a> "?>
 
     </div>
