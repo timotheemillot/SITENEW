@@ -84,7 +84,8 @@ class ReservationController{
         $indexView->generer([
             'popup' => $message,
             'allreservation' => $rm->getAll(),
-            'date' => $date
+            'date' => $date,
+            'filtre' =>"Filtrer"
         ]);
     }
 
@@ -122,7 +123,52 @@ class ReservationController{
 
         $indexView->generer(['allreservation' => $allreservation,
                               'popup' => $error,
-                              'date' => $date]);
+                              'date' => $date,
+                              'filtre' => "Filtrer"]);
+    }
+
+
+
+    public function displaySearch() : void
+    {
+        // si l'on clique sur le bouton recheche
+        if(isset($_POST['submit']))
+        {   
+            
+                //si le champ type de recherche n'est pas null
+                if ($_POST['champ'] != "")
+                {
+                   
+                    $indexView = new View('HistoriqueReservation');
+                    $rm = new ReservationManager();
+                    $searchRes = $rm->searchRequest($_POST["champ"]);
+
+                    $year = Date('Y');
+                    $month = Date('m');
+                    $day = Date('d');
+                    $date = $year . "-" . $month . "-" . $day;
+
+                    $indexView->generer([
+                        'allreservation' => $searchRes,  
+                        'popup' => "",
+                        'date' => $date,
+                         'filtre' =>  $_POST["champ"]       
+                    ]);
+                }
+                else
+                {
+                    $indexView = new View('HistoriqueReservation');
+                    $indexView->generer([
+                        'popup' => "Le champ type est obligatoire"         
+                    ]);
+                }
+            }          
+        
+        else{
+            $indexView = new View('HistoriqueReservation');
+            $indexView->generer([]);
+        }
+        
     }
 
 }
