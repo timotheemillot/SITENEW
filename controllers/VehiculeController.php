@@ -121,11 +121,8 @@ class VehiculeController
             $message = "Vehicule supprimé";
         }
 
-        $indexView = new View('Vehicule');
-        $indexView->generer([
-            'popup' => $message,
-            'allVehicule' => $vm->getAll()
-        ]);
+        $mc = new MainController();
+        $mc->displayVehicule($message);
     }
 
     function displayDetail($idVehicule)

@@ -42,21 +42,28 @@ if ($allVidange != false) {
             <td></td>
             <td>" . $vidange->getDateVidange() . "</td>
             <td>" . $vidange->getKmDerniereVidange() . "</td>
-            <td> <a href=\"#\">Edit  ||  </a><a href=\"index.php?action=del-vidange&idVidange=" . $vidange->getIdVidange() . "&idVehicule=" . $vehicule->getIdVehicule() . "\">Del</a></td>;
+            <td> <a href=\"#\"><img class=\"imgOutils\" src=\"public/img/edit2.png\"></a><a href=\"index.php?action=del-vidange&idVidange=" . $vidange->getIdVidange() . "&idVehicule=" . $vehicule->getIdVehicule() . "\"><img class=\"imgOutils\" src=\"public/img/delete.png\"></a></td>;
         </tr>";
     }
 }
 ?>
 
 </table>
-<div class="bout">
-<a href="index.php?action=add-vidange&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter une vidange</a>
-</div>
+<table class="multipleButtonTable">
+    <tr>
+        <td>
+            <div class="bout">
+                <a href="index.php?action=add-vidange&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter une vidange</a>
+            </div>
+        </td>
 
-
-<div class="bout">
-<a href="index.php?action=edit-cadence-vidange&idVehicule=<?=$vehicule->getIdVehicule()?>">Modifier la cadence</a>
-</div>
+        <td>
+            <div class="bout">
+                <a href="index.php?action=edit-cadence-vidange&idVehicule=<?=$vehicule->getIdVehicule()?>">Modifier la cadence</a>
+            </div>
+        </td>
+    <tr>
+</table>
 
 <table id="listcar">
 <tr id="lignehead">
@@ -99,7 +106,7 @@ if ($allCourroie != false) {
             <td></td>
             <td>" . $courroie->getDateChangementCourroie() . "</td>
             <td>" . $courroie->getKmDerniereCourroie() . "</td>
-            <td> <a href=\"#\">Edit  ||  </a><a href=\"index.php?action=del-courroie&idCourroie=" . $courroie->getIdCourroie() . "&idVehicule=" . $vehicule->getIdVehicule() . "\">Del</a></td>;
+            <td> <a href=\"#\"><img class=\"imgOutils\" src=\"public/img/edit2.png\"></a><a href=\"index.php?action=del-courroie&idCourroie=" . $courroie->getIdCourroie() . "&idVehicule=" . $vehicule->getIdVehicule() . "\"><img class=\"imgOutils\" src=\"public/img/delete.png\"></a></td>;
         </tr>";
     }
 }
@@ -107,14 +114,21 @@ if ($allCourroie != false) {
 ?>
 
 </table>
+<table class="multipleButtonTable">
+    <tr>
+        <td>
+            <div class="bout">
+                <a href="index.php?action=add-courroie&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter une donnée courroie</a>
+            </div>
+        </td>
 
-<div class="bout">
-    <a href="index.php?action=add-courroie&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter une donnée courroie</a>
-</div>
-
-<div class="bout">
-    <a href="index.php?action=edit-cadence-courroie&idVehicule=<?=$vehicule->getIdVehicule()?>">Modifier la cadence</a>
-</div>
+        <td>
+            <div class="bout">
+                <a href="index.php?action=edit-cadence-courroie&idVehicule=<?=$vehicule->getIdVehicule()?>">Modifier la cadence</a>
+            </div>
+        </td>
+    <tr>
+</table>
 
 <table id="listcar">
 <tr id="lignehead">
@@ -140,16 +154,20 @@ foreach($allCt as $Ct)
             <td>" . $Ct->getDateDernierCt() . "</td>
             <td>" . $complementaireCt . "</td>
             <td>" . $Ct->getDateProchainCt() . "</td>
-            <td> <a href=\"#\">Edit  ||  </a><a href=\"index.php?action=del-ct&idCt=" . $Ct->getIdCt() . "&idVehicule=" . $vehicule->getIdVehicule() . "\">Del</a></td>;
+            <td> <a href=\"#\"><img class=\"imgOutils\" src=\"public/img/edit2.png\"></a><a href=\"index.php?action=del-ct&idCt=" . $Ct->getIdCt() . "&idVehicule=" . $vehicule->getIdVehicule() . "\"><img class=\"imgOutils\" src=\"public/img/delete.png\"></a></td>;
         </tr>";
 }
 
 ?>
 
 </table>
-<div class="bout">
-    <a href="index.php?action=add-ct&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter un contrôle technique</a>
-</div>
+<table class="multipleButtonTable">
+    <td>
+        <div class="bout">
+            <a href="index.php?action=add-ct&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter un contrôle technique</a>
+        </div>
+    </td>
+</table>
 
 <table id="listcar">
 <tr id="lignehead">
@@ -172,7 +190,7 @@ foreach($allIntervention as $intervention)
             <td>" . $intervention->getCout() . "</td>
             <td>" . $intervention->getKilometre() . "</td>
             <td>" . $intervention->getDescription() . "</td>
-            <td> <a href=\"#\">Edit  ||  </a><a href=\"index.php?action=del-intervention&idIntervention=" . $intervention->getIdIntervention() . "&idVehicule=" . $vehicule->getIdVehicule() . "\">Del</a></td>;
+            <td> <a href=\"#\"><img class=\"imgOutils\" src=\"public/img/edit2.png\"></a><a href=\"index.php?action=del-intervention&idIntervention=" . $intervention->getIdIntervention() . "&idVehicule=" . $vehicule->getIdVehicule() . "\"><img class=\"imgOutils\" src=\"public/img/delete.png\"></a></td>;
         </tr>";
 }
 
@@ -181,6 +199,10 @@ foreach($allIntervention as $intervention)
 
 
 </table>
-<div class="bout">
-<a href="index.php?action=add-intervention&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter une intervention</a>
-</div>
+<table class="multipleButtonTable">
+    <td>
+        <div class="bout">
+            <a href="index.php?action=add-intervention&idVehicule=<?=$vehicule->getIdVehicule()?>">Ajouter une intervention</a>
+        </div>
+    </td>
+</table>

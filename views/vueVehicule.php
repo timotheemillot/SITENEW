@@ -50,7 +50,7 @@
                     echo "<td>Indisponible</td>";
 
                 echo "<td> <a href=\"index.php?action=detail-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\">Details</a>
-                <td> <a href=\"index.php?action=edit-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\"><img class=\"imgOutils\" src=\"../public/img/edit2.png\"></a><a href=\"index.php?action=del-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\"><img class=\"imgOutils\" src=\"../public/img/delete.png\"></a></td>";
+                <td> <a href=\"index.php?action=edit-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\"><img class=\"imgOutils\" src=\"public/img/edit2.png\"></a><a href=\"index.php?action=del-vehicule&idVehicule=" . $vehicule->getIdVehicule() . "\"><img class=\"imgOutils\" src=\"public/img/delete.png\"></a></td>";
             }
                 echo "</tr>";
         }
@@ -61,13 +61,22 @@
                     
 
     </table>    
-        
-    <?php
-        //si le compte est admin on propose d'ajouter un véhicule
-        if($compte->getIsAdmin() == 1)
-        echo"<div class=\"bout\"> 
-        <a href=\"index.php?action=add-vehicule\">Ajouter un véhicule</a>
-        <div>"
-    ?>
-          
+    <table class="multipleButtonTable">
+         <tr>
+            <td>
+                <div class="bout"> 
+                    <a href="index.php">Signaler un incident</a>
+                </div>
+            </td>
+        <?php
+            //si le compte est admin on propose d'ajouter un véhicule
+            if($compte->getIsAdmin() == 1)
+                echo"<td>
+                        <div class=\"bout\"> 
+                            <a href=\"index.php?action=add-vehicule\">Ajouter un véhicule</a>
+                        <div>
+                    </td>";
+        ?>  
+        </tr>
+    </table>  
 </div>

@@ -40,9 +40,9 @@
                 <br>
                 <label>Disponible ?</label> <br>
                 <label for="oui">Oui</label>
-                <input type="radio" id="oui" name="disponible" value="1" <?php if($vehicule->getDisponible() == 1) echo"checked=true"?>>
+                <input type="radio" id="oui" name="disponible" value="1" <?php if (isset($vehicule)) if($vehicule->getDisponible() == 1) echo"checked=true"?>>
                 <label for="non">Non</label>
-                <input type="radio" id="non" name="disponible" value="0" <?php if($vehicule->getDisponible() == 0) echo"checked=true"?>>
+                <input type="radio" id="non" name="disponible" value="0" <?php if (isset($vehicule)) if($vehicule->getDisponible() == 0) echo"checked=true"?>>
                 <br>
                 <!--<label for="ageparc">Age du parc : </label>
                 <input name="ageparc" type="number" value=<?php if(isset($vehicule)) echo $vehicule->getAgeParc();?>>
